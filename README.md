@@ -1,4 +1,4 @@
-# Motion
+# 💫 Motion
 
 > Animation engine for React
 
