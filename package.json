@@ -1,0 +1,91 @@
+{
+  "name": "@helpscout/motion",
+  "version": "0.0.0",
+  "description": "Animation library for React",
+  "main": "dist/index.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "add-contributor": "zero contributors add",
+    "prestart": "zero prestart",
+    "build:ts": "tsc",
+    "build:postclean": "rm -rf dist/__tests__",
+    "build": "npm run clean && npm run build:ts && npm run build:postclean",
+    "clean": "rm -rf dist",
+    "lint": "zero lint",
+    "dev": "zero test --watchAll",
+    "test": "npm run build",
+    "format": "zero format",
+    "precommit": "zero pre-commit",
+    "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
+    "release": "np --no-yarn",
+    "version": "npm run build",
+    "start": "npm run storybook",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "prettier": "prettier \"src/**/*.{js,ts,tsx}\" --write",
+    "pretty": "npm run prettier"
+  },
+  "author": "Jon Quach <hello@jonquach.com> (https://jonquach.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helpscout/motion.git"
+  },
+  "bugs": {
+    "url": "https://github.com/helpscout/motion/issues"
+  },
+  "keywords": [
+    "motion",
+    "animation",
+    "animate",
+    "fps",
+    "performance",
+    "engine",
+    "react"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "peerDependencies": {
+    "react": "^16 || ^15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@helpscout/fancy": "^2.2.4",
+    "@helpscout/helix": "^0.1.0",
+    "@helpscout/hsds-react": "^2.6.2",
+    "@helpscout/stats": "0.0.5",
+    "@helpscout/zero": "^1.0.3",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addons": "^4.1.11",
+    "@storybook/react": "^4.1.11",
+    "@types/enzyme": "3.1.15",
+    "@types/jest": "23.3.10",
+    "@types/react": "16.7.18",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.5",
+    "coveralls": "3.0.2",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "np": "^4.0.2",
+    "nyc": "13.0.0",
+    "prettier": "^1.16.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "@helpscout/react-utils": "^2.0.1",
+    "animejs": "^3.0.1"
+  }
+}
