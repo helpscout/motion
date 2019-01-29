@@ -124,7 +124,6 @@ const Excerpt = styled('div')`
 const AnimatedListItem = withMotion({
   componentDidMount: ({node, animate}) => {
     animate({
-      targets: node,
       keyframes: [
         {
           height: [0, node.clientHeight],
@@ -139,7 +138,6 @@ const AnimatedListItem = withMotion({
     node.style.height = `${node.clientHeight}px`
 
     return animate({
-      targets: node,
       keyframes: [
         {
           opacity: [1, 0],
@@ -160,7 +158,6 @@ const AnimatedExcerpt = withMotion({
     const {clientHeight: height} = node.querySelector('.content')
 
     animate({
-      targets: node,
       height: props.expanded ? height + 40 : 10,
     })
   },

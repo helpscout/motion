@@ -99,7 +99,6 @@ const animateStripeUI = ({node, animate}) => {
   const itemNode = document.querySelector('.item.active')
   if (!itemNode) return
   animate({
-    targets: node,
     width: itemNode.clientWidth,
     translateX: itemNode.offsetLeft,
   })

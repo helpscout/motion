@@ -1,21 +1,19 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import animate from './animate'
 import hoistNonReactStatics from '@helpscout/react-utils/dist/hoistNonReactStatics'
-import {sequenceNodeMount, sequenceNodeUnmount} from './utils'
+import wrapComponentName from '@helpscout/react-utils/dist/wrapComponentName'
+import Motion from './Motion'
 
 const defaultOptions = {
   componentDidMount: () => Promise.resolve(),
   componentDidUpdate: () => Promise.resolve(),
   componentWillUnmount: () => Promise.resolve(),
+  pure: true,
 }
 
-export interface Props {
-  componentDidMount: any
-  componentDidUpdate: any
-  componentWillUnmount: any
-}
-
+/**
+ * Higher-order component that wraps a component with <Motion>
+ * @returns {React.Component} Wrapped React component
+ */
 const withMotion = (options: any = defaultOptions) => WrappedComponent => {
   const mergedOptions = {
     ...defaultOptions,
@@ -25,42 +23,26 @@ const withMotion = (options: any = defaultOptions) => WrappedComponent => {
     componentDidUpdate,
     componentDidMount,
     componentWillUnmount,
+    pure,
   } = mergedOptions
 
-  class MotionWrapper extends React.PureComponent<Props> {
-    node: HTMLElement
+  const OuterBaseComponent = pure ? React.PureComponent : React.Component
 
-    componentDidMount() {
-      this.node = ReactDOM.findDOMNode(this)
-
-      sequenceNodeMount({
-        node: this.node,
-        componentDidMount,
-        props: this.props,
-      })
-    }
-
-    componentDidUpdate(prevProps) {
-      if (!this.node) return
-
-      componentDidUpdate({
-        node: this.node,
-        animate,
-        props: this.props,
-        prevProps,
-      })
-    }
-
-    componentWillUnmount() {
-      sequenceNodeUnmount({
-        node: this.node,
-        componentWillUnmount,
-        props: this.props,
-      })
-    }
+  class MotionWrapper extends OuterBaseComponent {
+    static displayName = wrapComponentName(WrappedComponent, 'withMotion')
 
     render() {
-      return <WrappedComponent {...this.props} />
+      const motionProps = {
+        componentDidUpdate,
+        componentDidMount,
+        componentWillUnmount,
+      }
+
+      return (
+        <Motion {...motionProps}>
+          <WrappedComponent {...this.props} />
+        </Motion>
+      )
     }
   }
 

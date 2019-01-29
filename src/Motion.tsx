@@ -1,9 +1,14 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import {sequenceNodeMount, sequenceNodeUnmount} from './utils'
+import {
+  sequenceNodeMount,
+  sequenceNodeUpdate,
+  sequenceNodeUnmount,
+} from './utils'
 
 export interface Props {
   componentDidMount: any
+  componentDidUpdate: any
   componentWillUnmount: any
 }
 
@@ -15,6 +20,7 @@ export class Motion extends React.PureComponent<Props> {
   }
 
   node: HTMLElement
+  animation: any
 
   componentDidMount() {
     this.node = ReactDOM.findDOMNode(this)
@@ -23,6 +29,20 @@ export class Motion extends React.PureComponent<Props> {
       node: this.node,
       componentDidMount: this.props.componentDidMount,
       props: this.props,
+    })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.animation) {
+      this.animation.pause()
+    }
+
+    sequenceNodeUpdate({
+      node: this.node,
+      componentDidUpdate: this.props.componentDidUpdate,
+      props: this.props,
+      prevProps,
+      callback: animation => (this.animation = animation),
     })
   }
 
