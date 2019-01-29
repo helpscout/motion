@@ -1,7 +1,7 @@
 {
   "name": "@helpscout/motion",
   "version": "0.0.0",
-  "description": "Animation library for React",
+  "description": "A simple animation library for React",
   "main": "dist/index.js",
   "private": false,
   "publishConfig": {
