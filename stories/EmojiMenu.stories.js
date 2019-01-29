@@ -2,8 +2,6 @@ import React from 'react'
 import {storiesOf} from '@storybook/react'
 import {StatsGraph} from '@helpscout/stats'
 import styled from '@helpscout/fancy'
-import {createSpec, faker} from '@helpscout/helix'
-
 import withMotion from '../src/withMotion'
 
 const stories = storiesOf('EmojiMenu', module)
