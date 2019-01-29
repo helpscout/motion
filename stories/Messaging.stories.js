@@ -44,7 +44,7 @@ stories.add('Example', () => {
           <hr />
           <MessageList innerRef={this.setNodeRef}>
             {this.state.items.map((item, index) => (
-              <AnimatedBubble {...item} />
+              <AnimatedBubble {...item} key={item.id} />
             ))}
           </MessageList>
         </div>
@@ -99,6 +99,7 @@ const BubbleUI = styled('div')`
   margin-right: auto;
   margin-left: 0;
   max-width: 80%;
+  will-change: opacity, transform;
 
   ${({type}) =>
     type === 'to' &&
