@@ -94,7 +94,6 @@ const Item = styled('div')`
   text-transform: capitalize;
   border-bottom: 1px solid #eee;
   overflow: hidden;
-  will-change: height;
 `
 
 const ItemInner = styled('div')`
@@ -109,7 +108,6 @@ const Excerpt = styled('div')`
   color: #888;
   font-size: 14px;
   padding: 10px 0;
-  will-change: height;
 
   &::before {
     content: '';

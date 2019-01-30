@@ -99,7 +99,6 @@ const BubbleUI = styled('div')`
   margin-right: auto;
   margin-left: 0;
   max-width: 80%;
-  will-change: opacity, transform;
 
   ${({type}) =>
     type === 'to' &&

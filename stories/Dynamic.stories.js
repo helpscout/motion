@@ -49,7 +49,6 @@ const Target = styled('div')`
   width: 20px;
   background: #ddd;
   cursor: grab;
-  will-change: transform;
   position: absolute;
   top: 50px;
   left: 50px;

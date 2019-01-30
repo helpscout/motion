@@ -93,7 +93,6 @@ const Stripe = styled('div')`
   position: absolute;
   bottom: 0;
   left: 0;
-  will-change: width, transform;
 `
 
 const animateStripeUI = ({node, animate}) => {

@@ -75,7 +75,6 @@ const EmojiList = styled('div')`
   display: inline-block;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 10px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  will-change: opacity, transform;
 `
 
 const AnimatedEmojiList = withMotion({
