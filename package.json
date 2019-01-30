@@ -25,7 +25,7 @@
     "format": "zero format",
     "precommit": "zero pre-commit",
     "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
-    "release": "np --no-yarn",
+    "release": "np --no-yarn --yolo",
     "version": "npm run build",
     "start": "npm run storybook",
     "storybook": "start-storybook -p 6006",
