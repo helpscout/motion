@@ -58,6 +58,8 @@ Promise that runs when the component is mounted.
 | animate | `Function`    | The [animate](./animate.md) function. |
 | props   | `Object`      | Props passed to `<Motion />`.         |
 
+---
+
 ### `componentWillUnmount({ node, animate, props })`
 
 * **Type** `Function<Promise>`
