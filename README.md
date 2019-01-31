@@ -1,5 +1,8 @@
 # 💫 Motion
 
+[![Build Status](https://travis-ci.org/helpscout/motion.svg?branch=master)](https://travis-ci.org/helpscout/motion)
+[![npm version](https://badge.fury.io/js/%40helpscout%2Fmotion.svg)](https://badge.fury.io/js/%40helpscout%2Fmotion)
+
 > A simple animation library for React
 
 ## Table of Contents
