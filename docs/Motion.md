@@ -45,7 +45,8 @@ function fadeOut({animate}) {
 
 ### `componentDidMount({ node, animate, props })`
 
-**Type** `Function<Promise>` | **Default** `() => Promise.resolve()`
+* **Type** `Function<Promise>` 
+* **Default** `() => Promise.resolve()`
 
 Promise that runs when the component is mounted.
 
@@ -59,7 +60,8 @@ Promise that runs when the component is mounted.
 
 ### `componentWillUnmount({ node, animate, props })`
 
-**Type** `Function<Promise>` | **Default** `() => Promise.resolve()`
+* **Type** `Function<Promise>`
+* **Default** `() => Promise.resolve()`
 
 Promise that runs when the component is unmounted.
 
