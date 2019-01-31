@@ -5,6 +5,8 @@
 
 > A simple animation library for React
 
+**[Check out the demo](https://helpscout-motion.netlify.com/)**
+
 ## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
