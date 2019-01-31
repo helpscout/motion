@@ -1,4 +1,4 @@
-# `withMotion(props)(Component)`
+# `withMotion(options)(Component)`
 
 `withMotion` is a higher-order component that renders a Component with `mount`, `update`, and `unmount` based animations. For more info on animations, check out [animate](./animate.md).
 
@@ -7,15 +7,15 @@
 ```jsx
 import React from 'react'
 import {withMotion} from '@helpscout/motion'
-import Zoolander from './components/Zoolander'
+import Hansel from './components/Hansel'
 
 class App extends React.Component {
   render() {
-    return <AnimatedZoolander />
+    return <AnimatedHansel />
   }
 }
 
-const AnimatedZoolander = withMotion({
+const AnimatedHansel = withMotion({
   componentDidMount: fadeInAndMoveUp,
   componentDidUpdate: moveLeftRight,
   componentWillUnmount: fadeOut,
@@ -56,7 +56,18 @@ function fadeOut({animate}) {
 }
 ```
 
-## Props
+## Options
+
+**Default Options**
+
+```js
+{
+  componentDidMount: () => Promise.resolve(),
+  componentDidUpdate: () => Promise.resolve(),
+  componentWillUnmount: () => Promise.resolve(),
+  pure: true,
+}
+```
 
 ### `componentDidMount({ node, animate, props })`
 
@@ -107,3 +118,10 @@ Promise that runs when the component is unmounted.
 | node    | `HTMLElement` | The target DOM element.               |
 | animate | `Function`    | The [animate](./animate.md) function. |
 | props   | `Object`      | Props passed to `<Motion />`.         |
+
+### `pure`
+
+- **Type** `boolean`
+- **Default** `true`
+
+Determines if the component extends from `React.PureComponent` or `React.Component`.
