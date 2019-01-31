@@ -15,6 +15,8 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Documentation](#documentation)
+- [See Also](#see-also)
+- [Thanks!](#thanks)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -68,3 +70,12 @@ function fadeOut({animate}) {
 ## Documentation
 
 For additional info on Motion, check out [our documentation](./docs)!
+
+## See Also
+
+- [react-utils](https://github.com/helpscout/react-utils)
+- [stats](https://github.com/helpscout/stats)
+
+## Thanks!
+
+A big thanks to [Julian Garnier](https://github.com/juliangarnier) for creating [Anime.js](https://github.com/juliangarnier/anime), which powers the animations for Motion.
