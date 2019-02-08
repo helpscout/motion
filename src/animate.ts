@@ -1,4 +1,4 @@
-import * as animate from 'animejs'
+import animate from './anime'
 import {doCallback} from './utils'
 
 // Plucking the method names from the Animation library.
