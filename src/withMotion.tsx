@@ -9,6 +9,7 @@ import {
 } from './utils'
 
 const defaultOptions = {
+  isAnimateOnInitialMount: true,
   componentDidMount: () => Promise.resolve(),
   componentDidUpdate: () => Promise.resolve(),
   componentWillUnmount: () => Promise.resolve(),
@@ -28,10 +29,18 @@ const withMotion = (options: any = defaultOptions) => WrappedComponent => {
     componentDidUpdate,
     componentDidMount,
     componentWillUnmount,
+    isAnimateOnInitialMount,
     pure,
   } = mergedOptions
 
   const OuterBaseComponent = pure ? React.PureComponent : React.Component
+
+  /**
+   * Internal (secret) factory state to track the initial mount (once)
+   * of the component. This helps prevent components from animating on
+   * page load.
+   */
+  let __didInitialMount = false
 
   class MotionWrapper extends OuterBaseComponent {
     static displayName = wrapComponentName(WrappedComponent, 'withMotion')
@@ -41,11 +50,16 @@ const withMotion = (options: any = defaultOptions) => WrappedComponent => {
     componentDidMount() {
       this.node = ReactDOM.findDOMNode(this)
 
-      sequenceNodeMount({
-        node: this.node,
-        componentDidMount: componentDidMount,
-        props: this.props,
-      })
+      /**
+       * Allow for animation if isAnimateOnInitialMount is set.
+       */
+      if (__didInitialMount || isAnimateOnInitialMount) {
+        sequenceNodeMount({
+          node: this.node,
+          componentDidMount: componentDidMount,
+          props: this.props,
+        })
+      }
     }
 
     componentDidUpdate(prevProps) {
@@ -68,6 +82,12 @@ const withMotion = (options: any = defaultOptions) => WrappedComponent => {
         componentWillUnmount: componentWillUnmount,
         props: this.props,
       })
+
+      /**
+       * Set the internal (secret) initial mount flag to true. This ensures
+       * that subsequent mounts from the same component can animate.
+       */
+      __didInitialMount = true
     }
 
     render() {

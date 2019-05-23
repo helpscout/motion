@@ -29,7 +29,7 @@ function fadeInAndMoveUp({animate}) {
   return animate({
     opacity: [0, 1],
     translateY: [-20, 0],
-  })
+  }).finished
 }
 
 function fadeOut({animate}) {
@@ -37,7 +37,7 @@ function fadeOut({animate}) {
     opacity: [0, 1],
     duration: 500,
     easing: 'linear',
-  })
+  }).finished
 }
 ```
 
@@ -45,8 +45,8 @@ function fadeOut({animate}) {
 
 ### `componentDidMount({ node, animate, props })`
 
-* **Type** `Function<Promise>` 
-* **Default** `() => Promise.resolve()`
+- **Type** `Function<Promise>`
+- **Default** `() => Promise.resolve()`
 
 Promise that runs when the component is mounted.
 
@@ -62,8 +62,8 @@ Promise that runs when the component is mounted.
 
 ### `componentWillUnmount({ node, animate, props })`
 
-* **Type** `Function<Promise>`
-* **Default** `() => Promise.resolve()`
+- **Type** `Function<Promise>`
+- **Default** `() => Promise.resolve()`
 
 Promise that runs when the component is unmounted.
 

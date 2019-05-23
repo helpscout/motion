@@ -55,7 +55,7 @@ function fadeInAndMoveUp({animate}) {
   return animate({
     opacity: [0, 1],
     translateY: [-20, 0],
-  })
+  }).finished
 }
 
 function fadeOut({animate}) {
@@ -63,7 +63,7 @@ function fadeOut({animate}) {
     opacity: [0, 1],
     duration: 500,
     easing: 'linear',
-  })
+  }).finished
 }
 ```
 

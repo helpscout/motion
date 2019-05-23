@@ -120,6 +120,7 @@ const Excerpt = styled('div')`
 `
 
 const AnimatedListItem = withMotion({
+  isAnimateOnInitialMount: false,
   componentDidMount: ({node, animate}) => {
     animate({
       keyframes: [
