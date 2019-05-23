@@ -28,7 +28,7 @@ function fadeInAndMoveUp({animate}) {
   return animate({
     opacity: [0, 1],
     translateY: [-20, 0],
-  })
+  }).finished
 }
 
 function moveLeftRight({animate}) {
@@ -44,7 +44,7 @@ function moveLeftRight({animate}) {
         translateX: 0,
       },
     ],
-  })
+  }).finished
 }
 
 function fadeOut({animate}) {
@@ -52,7 +52,7 @@ function fadeOut({animate}) {
     opacity: [0, 1],
     duration: 500,
     easing: 'linear',
-  })
+  }).finished
 }
 ```
 
@@ -65,6 +65,7 @@ function fadeOut({animate}) {
   componentDidMount: () => Promise.resolve(),
   componentDidUpdate: () => Promise.resolve(),
   componentWillUnmount: () => Promise.resolve(),
+  isAnimateOnInitialMount: true,
   pure: true,
 }
 ```
@@ -118,6 +119,13 @@ Promise that runs when the component is unmounted.
 | node    | `HTMLElement` | The target DOM element.               |
 | animate | `Function`    | The [animate](./animate.md) function. |
 | props   | `Object`      | Props passed to `<Motion />`.         |
+
+### `isAnimateOnInitialMount`
+
+- **Type** `boolean`
+- **Default** `true`
+
+Determines if the component can animate on the initial mount/render.
 
 ### `pure`
 
