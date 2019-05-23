@@ -1,6 +1,18 @@
 import {createAnimate} from './animate'
 
 /**
+ * Determines if the current environment is a test environment.
+ * We need to prevent the animations from happening, since rAF may be
+ * mocked.
+ */
+export const isTestEnv = () => {
+  if (!process || !process.env) return
+  const currentEnv = process.env.NODE_ENV || process.env.BABEL_ENV || ''
+
+  return currentEnv.toLowerCase() === 'test'
+}
+
+/**
  * Determines if an entity is a function
  * @param {any} entity The entity.
  * @returns {boolean} The result.
@@ -24,6 +36,7 @@ export const doCallback = callback => (...args) =>
  * @returns {any} The result of the lifecycle callback.
  */
 export function sequenceNodeMount({node, componentDidMount, props}) {
+  if (isTestEnv()) return
   if (!node) return
 
   if (!isFn(componentDidMount)) {
@@ -53,6 +66,7 @@ export function sequenceNodeUpdate({
   props,
   callback,
 }) {
+  if (isTestEnv()) return
   if (!node) return
 
   if (!isFn(componentDidUpdate)) {
@@ -80,6 +94,7 @@ export function sequenceNodeUpdate({
  * @returns {any} The result of the lifecycle callback.
  */
 export function sequenceNodeUnmount({node, componentWillUnmount, props}) {
+  if (isTestEnv()) return
   if (!node) return
 
   if (!isFn(componentWillUnmount)) {
