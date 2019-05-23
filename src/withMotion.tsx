@@ -47,6 +47,15 @@ const withMotion = (options: any = defaultOptions) => WrappedComponent => {
     node: HTMLElement
     animation: any
 
+    getProps = () => {
+      const baseComponentDefaultProps = WrappedComponent.defaultProps || {}
+
+      return {
+        ...baseComponentDefaultProps,
+        ...this.props,
+      }
+    }
+
     componentDidMount() {
       this.node = ReactDOM.findDOMNode(this)
 
@@ -57,7 +66,7 @@ const withMotion = (options: any = defaultOptions) => WrappedComponent => {
         sequenceNodeMount({
           node: this.node,
           componentDidMount: componentDidMount,
-          props: this.props,
+          props: this.getProps(),
         })
       }
     }
@@ -70,7 +79,7 @@ const withMotion = (options: any = defaultOptions) => WrappedComponent => {
       sequenceNodeUpdate({
         node: this.node,
         componentDidUpdate: componentDidUpdate,
-        props: this.props,
+        props: this.getProps(),
         prevProps,
         callback: animation => (this.animation = animation),
       })
@@ -80,7 +89,7 @@ const withMotion = (options: any = defaultOptions) => WrappedComponent => {
       sequenceNodeUnmount({
         node: this.node,
         componentWillUnmount: componentWillUnmount,
-        props: this.props,
+        props: this.getProps(),
       })
 
       /**
